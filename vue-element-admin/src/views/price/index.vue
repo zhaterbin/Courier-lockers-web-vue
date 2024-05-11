@@ -124,7 +124,7 @@
             <el-button v-if="row.status!='draft'" size="mini" @click="handleModifyStatus(row,'draft')">
               Draft
             </el-button> -->
-          <el-button v-if="row.status != 'deleted'" size="mini" type="danger" @click="handleDelete(row, $index)">
+          <el-button  size="mini" type="danger" @click="handleDelete(row, $index)">
             Delete
           </el-button>
         </template>
@@ -205,7 +205,7 @@ import { fetchList, fetchPv, createArticle, updateArticle } from '@/api/article'
 import waves from '@/directive/waves' // waves directive
 import { parseTime } from '@/utils'
 import Pagination from '@/components/Pagination' // secondary package based on el-pagination
-import { fetchReportList, InPriceRuler, UpdateRuler } from '@/api/price'
+import { fetchReportList, InPriceRuler, UpdateRuler ,DeleteRuler} from '@/api/price'
 
 const calendarTypeOptions = [
   { key: 'CN', display_name: 'China' },
@@ -401,6 +401,7 @@ export default {
             const index = this.list.findIndex(v => v.id === this.temp.id)
             this.list.splice(index, 1, this.temp)
             this.dialogFormVisible = false
+            this.getList()
             this.$notify({
               title: 'Success',
               message: 'Update Successfully',
@@ -412,15 +413,17 @@ export default {
       })
     },
     handleDelete(row, index) {
+      const id = parseInt(row.priceId);
+      DeleteRuler(id).then((res) => {
+      this.getList()
       this.$notify({
-        // DeleteRuler(index).then((res)=>{
-        //   title: 'Success',
-        //   message: 'Delete Successfully',
-        //   type: 'success',
-        //   duration: 2000
-        // })
+        title: 'Success',
+        message: 'Delete Successfully',
+        type: 'success',
+        duration: 2000
       })
       this.list.splice(index, 1)
+      })
     },
     handleFetchPv(pv) {
       fetchPv(pv).then(response => {
