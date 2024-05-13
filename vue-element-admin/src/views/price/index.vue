@@ -2,8 +2,8 @@
   <div class="app-container">
     <div class="filter-container">
       <el-input
-        v-model="listQuery.title"
-        placeholder="Title"
+        v-model="listQuery.requestData.userId"
+        placeholder="userId"
         style="width: 200px;"
         class="filter-item"
         @keyup.enter.native="handleFilter"
@@ -246,9 +246,11 @@ export default {
       calendarTypeOptions: [],
       listQuery: {
         pageSize: 20,
-        current: 0
+        current: 0,
         //   importance: undefined,
-        //   title: undefined,
+        requestData: {
+          userId : undefined,
+        },
         //   type: undefined,
         //   sort: '+id'
       },
