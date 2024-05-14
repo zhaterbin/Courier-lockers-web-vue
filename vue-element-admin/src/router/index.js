@@ -79,7 +79,8 @@ export const constantRoutes = [
         path: 'dashboard',
         component: () => import('@/views/dashboard/index'),
         name: 'Dashboard',
-        meta: { title: 'Solid哥哥的快递机柜', icon: 'dashboard', affix: true }
+        meta: { title: 'Solid哥哥的快递机柜', icon: 'dashboard', affix: true },
+        roles : ['editor']
       }
     ]
   },
@@ -92,7 +93,7 @@ export const constantRoutes = [
         path: 'index',
         component: () => import('@/views/price/index'),
         name: 'Price',
-        meta: { title: 'Solid付费规则', icon: 'money', affix: true,roles: ['admin', 'editor'] }
+        meta: { title: 'Solid付费规则', icon: 'money', affix: true  ,roles: ['admin']}
       }
     ]
   },
@@ -183,7 +184,8 @@ export const asyncRoutes = [
         component: () => import('@/views/permission/directive'),
         name: 'DirectivePermission',
         meta: {
-          title: 'Directive Permission'
+          title: 'Directive Permission',
+          roles: ['admin']
           // if do not set roles, means: this page does not require permission
         }
       },
@@ -207,7 +209,7 @@ export const asyncRoutes = [
         path: 'index',
         component: () => import('@/views/icons/index'),
         name: 'Icons',
-        meta: { title: 'Icons', icon: 'icon', noCache: true }
+        meta: { title: 'Icons', icon: 'icon', noCache: true ,roles: ['admin']  }
       }
     ]
   },
@@ -232,20 +234,20 @@ export const asyncRoutes = [
         path: 'create',
         component: () => import('@/views/example/create'),
         name: 'CreateArticle',
-        meta: { title: 'Create Article', icon: 'edit' }
+        meta: { title: 'Create Article', icon: 'edit' ,roles: ['admin'] }
       },
       {
         path: 'edit/:id(\\d+)',
         component: () => import('@/views/example/edit'),
         name: 'EditArticle',
-        meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' },
+        meta: { title: 'Edit Article', noCache: true, activeMenu: '/example/list' ,roles: ['admin']},
         hidden: true
       },
       {
         path: 'list',
         component: () => import('@/views/example/list'),
         name: 'ArticleList',
-        meta: { title: 'Article List', icon: 'list' }
+        meta: { title: 'Article List', icon: 'list',roles: ['admin'] }
       }
     ]
   },
@@ -256,9 +258,9 @@ export const asyncRoutes = [
     children: [
       {
         path: 'index',
-        component: () => import('@/views/tab/index'),
+        component: () => import('@/views/tab/index'), 
         name: 'Tab',
-        meta: { title: 'Tab', icon: 'tab' }
+        meta: { title: 'Tab', icon: 'tab' },roles: ['admin']
       }
     ]
   },

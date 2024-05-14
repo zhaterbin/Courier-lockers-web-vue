@@ -48,6 +48,8 @@ const actions = {
 
   // get user info
   getInfo({ commit, state }) {
+    
+    console.log(state);
     return new Promise((resolve, reject) => {
       // debugger
       // getInfo(state.token).then(response => {
@@ -57,13 +59,28 @@ const actions = {
         //   reject('Verification failed, please Login again.')
         // }
 
-        const data= { roles : ['admin'], name:'Administrator', avatar : 'https://th.bing.com/th?id=OIP.KwINwKYn-DMCBTqfBpyTkwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2', introduction : '123' } ;
-        const {roles,name,avatar,introduction}=data
+        // const data= { roles : ['editor'], name:'Administrator', avatar : 'https://th.bing.com/th?id=OIP.KwINwKYn-DMCBTqfBpyTkwHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&pid=3.1&rm=2', introduction : '123' } ;
+        // const {roles,name,avatar,introduction}=data
         // roles must be a non-empty array
         // if (!roles || roles.length <= 0) {
         //   reject('getInfo: roles must be a non-null array!')
         // }
+        // debugger
+        
+        getInfo(state.token).then(response => {
+          
+          const { data } = response
+          
+          if (!data) {
+            reject('Verification failed, please Login again.')
+          }
   
+          const { roles, name, avatar, introduction } = data
+  
+          // roles must be a non-empty array
+          if (!roles || roles.length <= 0) {
+            reject('getInfo: roles must be a non-null array!')
+          }
         commit('SET_ROLES', roles)
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
@@ -72,7 +89,7 @@ const actions = {
       }).catch(error => {
         reject(error)
       })
-    // })
+    })
   },
 
   // user logout
