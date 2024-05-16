@@ -9,7 +9,8 @@ const componentsRouter = {
   name: 'ComponentDemo',
   meta: {
     title: 'Components',
-    icon: 'component'
+    icon: 'component',
+    roles: ['admin']
   },
   children: [
     {
