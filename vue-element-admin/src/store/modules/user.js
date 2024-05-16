@@ -7,7 +7,8 @@ const state = {
   name: '',
   avatar: '',
   introduction: '',
-  roles: []
+  roles: [],
+  // menus: "",//新增
 }
 
 const mutations = {
@@ -25,7 +26,11 @@ const mutations = {
   },
   SET_ROLES: (state, roles) => {
     state.roles = roles
-  }
+  },
+  //  // 新增
+  //  SET_MENUS: (state, menus) => {
+  //   state.menus = menus
+  // }
 }
 
 const actions = {
@@ -74,10 +79,59 @@ const actions = {
           if (!data) {
             reject('Verification failed, please Login again.')
           }
-  
+          
           const { roles, name, avatar, introduction } = data
+        //   const menus = [
+        //     {
+        //       "path": "/system",
+        //       "redirect": "/menu",
+        //       "component": "Layout",
+        //       "meta": {
+        //         "title": "系统管理",
+        //         "icon": "form"
+        //       },
+        //       "children": [{
+        //         "path": "/menu",
+        //         "name": "menu",
+        //         "component": "menu/index",
+        //         "meta": {
+        //           "title": "菜单管理",
+        //           "icon": "table",
+        //         }
+        //       },
+        //       {
+        //         "path": "/roles",
+        //         "name": "roles",
+        //         "component": "roles/index",
+        //         "meta": {
+        //           "title": "角色管理",
+        //           "icon": "table",
+        //         }
+        //       },
+        //       {
+        //         "path": "/administrator",
+        //         "name": "administrator",
+        //         "component": "dashboard/index",
+        //         "meta": {
+        //           "title": "用户管理",
+        //           "icon": "table"
+        //         }
+        //       }
+        //       ]
+        //     }
   
-          // roles must be a non-empty array
+        //   ]
+        //   //如果需要404 页面，请在此处添加
+        // menus.push({
+        //   path: "/404",
+        //   component: "404",
+        //   hidden: true
+        // }, {
+        //   path: "*",
+        //   redirect: "/404",
+        //   hidden: true
+        // })
+
           if (!roles || roles.length <= 0) {
             reject('getInfo: roles must be a non-null array!')
           }
@@ -85,6 +139,7 @@ const actions = {
         commit('SET_NAME', name)
         commit('SET_AVATAR', avatar)
         commit('SET_INTRODUCTION', introduction)
+        // commit("SET_MENUS", menus) // 触发vuex SET_MENUS 保存路由表到vuex
         resolve(data)
       }).catch(error => {
         reject(error)

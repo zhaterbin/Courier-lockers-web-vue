@@ -38,53 +38,133 @@ import nestedRouter from './modules/nested'
  * a base page that does not have permission requirements
  * all roles can be accessed
  */
+// export const constantRoutes = [
+//   {
+//     path: '/redirect',
+//     component: Layout,
+//     hidden: true,
+//     children: [
+//       {
+//         path: '/redirect/:path(.*)',
+//         component: () => import('@/views/redirect/index')
+//       }
+//     ]
+//   },
+//   {
+//     path: '/login',
+//     component: () => import('@/views/login/index'),
+//     hidden: true
+//   },
+//   {
+//     path: '/auth-redirect',
+//     component: () => import('@/views/login/auth-redirect'),
+//     hidden: true
+//   },
+//   {
+//     path: '/404',
+//     component: () => import('@/views/error-page/404'),
+//     hidden: true
+//   },
+//   {
+//     path: '/401',
+//     component: () => import('@/views/error-page/401'),
+//     hidden: true
+//   },
+//   {
+//     path: '/',
+//     component: Layout,
+//     redirect: '/dashboard',
+//     children: [
+//       {
+//         path: 'dashboard',
+//         component: () => import('@/views/dashboard/index'),
+//         name: 'Dashboard',
+//         meta: { title: 'Solid哥哥的快递机柜', icon: 'dashboard', affix: true },
+//         roles : ['editor']
+//       }
+//     ]
+//   },
+//   // {
+//   //   path: '/price',
+//   //   component: Layout,
+//   //   redirect: '/dashboard',
+//   //   children: [
+//   //     {
+//   //       path: 'index',
+//   //       component: () => import('@/views/price/index'),
+//   //       name: 'Price',
+//   //       meta: { title: 'Solid付费规则', icon: 'money', affix: true  ,roles: ['admin']}
+//   //     }
+//   //   ]
+//   // },
+//   // {
+//   //   path: '/documentation',
+//   //   component: Layout,
+//   //   children: [
+//   //     {
+//   //       path: 'index',
+//   //       component: () => import('@/views/documentation/index'),
+//   //       name: 'Documentation',
+//   //       meta: { title: 'Documentation', icon: 'documentation', affix: true }
+//   //     }
+//   //   ]
+//   // },
+//   // {
+//   //   path: '/guide',
+//   //   component: Layout,
+//   //   redirect: '/guide/index',
+//   //   children: [
+//   //     {
+//   //       path: 'index',
+//   //       component: () => import('@/views/guide/index'),
+//   //       name: 'Guide',
+//   //       meta: { title: 'Guide', icon: 'guide', noCache: true }
+//   //     }
+//   //   ]
+//   // },
+//   // {
+//   //   path: '/profile',
+//   //   component: Layout,
+//   //   redirect: '/profile/index',
+//   //   hidden: true,
+//   //   children: [
+//   //     {
+//   //       path: 'index',
+//   //       component: () => import('@/views/profile/index'),
+//   //       name: 'Profile',
+//   //       meta: { title: 'Profile', icon: 'user', noCache: true }
+//   //     }
+//   //   ]
+//   // }
+// ]
+
+
+
 export const constantRoutes = [
-  {
-    path: '/redirect',
-    component: Layout,
-    hidden: true,
-    children: [
-      {
-        path: '/redirect/:path(.*)',
-        component: () => import('@/views/redirect/index')
-      }
-    ]
-  },
   {
     path: '/login',
     component: () => import('@/views/login/index'),
     hidden: true
   },
   {
-    path: '/auth-redirect',
-    component: () => import('@/views/login/auth-redirect'),
-    hidden: true
-  },
-  {
-    path: '/404',
-    component: () => import('@/views/error-page/404'),
-    hidden: true
-  },
-  {
-    path: '/401',
-    component: () => import('@/views/error-page/401'),
-    hidden: true
-  },
-  {
     path: '/',
     component: Layout,
     redirect: '/dashboard',
-    children: [
-      {
-        path: 'dashboard',
-        component: () => import('@/views/dashboard/index'),
-        name: 'Dashboard',
-        meta: { title: 'Solid哥哥的快递机柜', icon: 'dashboard', affix: true },
-        roles : ['editor']
-      }
-    ]
-  },
-  {
+    children: [{
+      path: 'dashboard',
+      name: 'Dashboard',
+      component: () => import('@/views/dashboard/index'),
+      meta: { title: 'Dashboard', icon: 'dashboard' }
+    }]
+  }
+]
+
+/**
+ * asyncRoutes
+ * the routes that need to be dynamically loaded based on user roles
+ */
+export const asyncRoutes = [
+    {
     path: '/price',
     component: Layout,
     redirect: '/dashboard',
@@ -97,52 +177,6 @@ export const constantRoutes = [
       }
     ]
   },
-  {
-    path: '/documentation',
-    component: Layout,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/documentation/index'),
-        name: 'Documentation',
-        meta: { title: 'Documentation', icon: 'documentation', affix: true }
-      }
-    ]
-  },
-  {
-    path: '/guide',
-    component: Layout,
-    redirect: '/guide/index',
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/guide/index'),
-        name: 'Guide',
-        meta: { title: 'Guide', icon: 'guide', noCache: true }
-      }
-    ]
-  },
-  {
-    path: '/profile',
-    component: Layout,
-    redirect: '/profile/index',
-    hidden: true,
-    children: [
-      {
-        path: 'index',
-        component: () => import('@/views/profile/index'),
-        name: 'Profile',
-        meta: { title: 'Profile', icon: 'user', noCache: true }
-      }
-    ]
-  }
-]
-
-/**
- * asyncRoutes
- * the routes that need to be dynamically loaded based on user roles
- */
-export const asyncRoutes = [
   // {
   //   path: '/Courier-lockers',
   //   component: Layout,
@@ -167,7 +201,7 @@ export const asyncRoutes = [
     meta: {
       title: 'Permission',
       icon: 'lock',
-      roles: ['admin', 'editor'] // you can set roles in root nav
+      roles: ['admin'] // you can set roles in root nav
     },
     children: [
       {

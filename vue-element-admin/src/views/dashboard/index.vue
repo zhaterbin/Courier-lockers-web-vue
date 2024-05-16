@@ -2,7 +2,7 @@
   <div class="dashboard-container">
     <div> 
       <el-tag v-permission="['admin']">admin</el-tag>
-      <el-tag v-permission="['editor']">admin</el-tag>
+      <el-tag v-permission="['editor']">editor</el-tag>
     </div>
     <component :is="currentRole" />
   </div>
