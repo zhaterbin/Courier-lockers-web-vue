@@ -3,7 +3,6 @@
 </template>
 
 <script>
-import echarts from 'echarts'
 import * as echarts from 'echarts';
 
 var chartDom = document.getElementById('main');

@@ -71,7 +71,7 @@ export default {
           itemWidth: 14,
           itemHeight: 5,
           itemGap: 13,
-          data: ['CMCC', 'CTCC', 'CUCC'],
+          data: ['Solid哥的盈利', 'Solid哥的快递入库', 'Solid哥的快递出库'],
           right: '4%',
           textStyle: {
             fontSize: 12,
@@ -119,7 +119,7 @@ export default {
           }
         }],
         series: [{
-          name: 'CMCC',
+          name: 'Solid哥的盈利',
           type: 'line',
           smooth: true,
           symbol: 'circle',
@@ -153,7 +153,7 @@ export default {
           },
           data: [220, 182, 191, 134, 150, 120, 110, 125, 145, 122, 165, 122]
         }, {
-          name: 'CTCC',
+          name: 'Solid哥的快递入库',
           type: 'line',
           smooth: true,
           symbol: 'circle',
@@ -187,7 +187,7 @@ export default {
           },
           data: [120, 110, 125, 145, 122, 165, 122, 220, 182, 191, 134, 150]
         }, {
-          name: 'CUCC',
+          name: 'Solid哥的快递出库',
           type: 'line',
           smooth: true,
           symbol: 'circle',
