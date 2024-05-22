@@ -199,8 +199,8 @@ export const asyncRoutes = [
     alwaysShow: true, // will always show the root menu
     name: 'Permission',
     meta: {
-      title: 'Permission',
-      icon: 'lock',
+      title: 'solid的人员身份管理',
+      icon: 'peoples',
       roles: ['admin'] // you can set roles in root nav
     },
     children: [
@@ -228,7 +228,7 @@ export const asyncRoutes = [
         component: () => import('@/views/permission/role'),
         name: 'RolePermission',
         meta: {
-          title: 'Role Permission',
+          title: '身份管理',
           roles: ['admin']
         }
       }

@@ -2,14 +2,14 @@ import request from '@/utils/request'
 
 export function getRoutes() {
   return request({
-    url: '/vue-element-admin/routes',
+    url: '/api/user/GetRoutes',
     method: 'get'
   })
 }
 
 export function getRoles() {
   return request({
-    url: '/vue-element-admin/roles',
+    url: '/api/user/userRole',
     method: 'get'
   })
 }
