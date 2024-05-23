@@ -2,7 +2,7 @@ import request from '@/utils/request'
 
 export function fetchList(query) {
   return request({
-    url: '/api/InStorage/PriceRulerPage',
+    url: '/vue-element-admin/article/detail',
     method: 'post',
     params: query
   })

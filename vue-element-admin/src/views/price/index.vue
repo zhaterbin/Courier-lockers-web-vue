@@ -124,9 +124,18 @@
             <el-button v-if="row.status!='draft'" size="mini" @click="handleModifyStatus(row,'draft')">
               Draft
             </el-button> -->
-          <el-button  size="mini" type="danger" @click="handleDelete(row, $index)">
-            Delete
-          </el-button>
+            <el-popconfirm   
+                confirm-button-text='好的'
+                cancel-button-text='不用了'
+                icon="el-icon-info"
+                icon-color="red"
+                title="这是一段内容确定删除吗？"
+                @confirm="handleDelete(row, $index)"
+                @onConfirm="handleDelete(row, $index)"> 
+              <el-button  size="mini" type="danger" slot="reference">
+                Delete
+              </el-button>
+            </el-popconfirm>
         </template>
       </el-table-column>
     </el-table>
@@ -288,7 +297,6 @@ export default {
     this.getList()
     this.createData()
     this.handleUpdate()
-    this.handleDelete()
   },
   methods: {
     InPriceRuler() {
